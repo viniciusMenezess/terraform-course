@@ -30,5 +30,5 @@ resource "aws_key_pair" "chaveSSH" {
 
 output "IP_publico" {
   value = aws_instance.app_server.public_ip
-  description = "Public IP of instance : "
+
 }
