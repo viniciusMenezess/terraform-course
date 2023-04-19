@@ -6,5 +6,5 @@ module "aws-dev" {
 }
 
 output "IP" {
-  value = module.aws-dev.IP-publico
+  value = module.aws-dev.IP_publico
 }
