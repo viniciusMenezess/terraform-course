@@ -3,6 +3,8 @@ module "aws_prod" {
   instancia = "t2.micro"
   regiao_aws = "us-east-1"
   chave = "IaC-PROD"
+  securityGroupName = "production-team-access"
+  securityGroupDescription = "Acesso para o time de produção."
 }
 
 output "IP" {

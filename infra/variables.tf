@@ -9,3 +9,11 @@ variable "chave" {
 variable "instancia" {
   type = string
 }
+
+variable "securityGroupName" {
+  type = string
+}
+
+variable "securityGroupDescription" {
+  type="string"
+}

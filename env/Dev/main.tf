@@ -3,6 +3,8 @@ module "aws-dev" {
   instancia = "t2.micro"
   regiao_aws = "us-east-1"
   chave = "IaC-DEV"
+  securityGroupName = "development-team-access"
+  securityGroupDescription = "Acesso para o time de desenvolvimento."
 }
 
 output "IP" {
