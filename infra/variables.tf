@@ -1,3 +1,7 @@
+variable "machineName"{
+  type = string
+}
+
 variable "regiao_aws" {
   type = string
 }
@@ -15,5 +19,5 @@ variable "securityGroupName" {
 }
 
 variable "securityGroupDescription" {
-  type="string"
+  type = string
 }

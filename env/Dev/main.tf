@@ -1,5 +1,6 @@
 module "aws-dev" {
   source = "../../infra"
+  machineName = "machine-dev-terraform"
   instancia = "t2.micro"
   regiao_aws = "us-east-1"
   chave = "IaC-DEV"

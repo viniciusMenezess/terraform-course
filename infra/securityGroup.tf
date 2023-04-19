@@ -1,4 +1,4 @@
-resource "aws_security_group" "acesso-geral" {
+resource "aws_security_group" "securityGroup"{
   name = var.securityGroupName
   description = var.securityGroupDescription
   
@@ -18,6 +18,6 @@ resource "aws_security_group" "acesso-geral" {
   }
   
   tags = {
-    Name = "Acesso-geral"
+    Name = var.securityGroupName
   }
 }

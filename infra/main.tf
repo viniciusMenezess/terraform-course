@@ -19,7 +19,7 @@ resource "aws_instance" "app_server" {
   key_name = var.chave
 
   tags = {
-    Name = "Terraform Ansible Python"
+    Name = var.machineName
   }
 }
 
