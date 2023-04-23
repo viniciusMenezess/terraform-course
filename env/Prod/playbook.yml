@@ -8,12 +8,17 @@
         update_cache: yes
       become: yes
 
+    - name: Git Clone
+      ansible.builtin.git:
+        repo: https://github.com/guilhermeonrails/clientes-leo-api.git
+        dest: /home/ubuntu/tcc
+        version: master
+        force: yes
+
     - name: Instalando depencias com pip(Djando e Django Rest) 
       pip: 
         virtualenv: /home/ubuntu/tcc/venv
-        name: 
-          - django
-          - djangorestframework
+        requirements: /home/ubuntu/tcc/requirements.txt
 
     - name : Verificando se o projeto existe
       stat: 
@@ -29,4 +34,15 @@
         path: /home/ubuntu/tcc/setup/settings.py 
         regexp: 'ALLOWED_HOSTS'
         line: 'ALLOWED_HOSTS = ["*"]'
-        backrefs: yes  
+        backrefs: yes
+
+    - name: Configurando o banco de dados 
+      shell: '. /home/ubuntu/tcc/venv/bin/activate; python /home/ubuntu/tcc/manage.py migrate'
+
+    - name: Carregando os dados iniciais 
+      shell: '. /home/ubuntu/tcc/venv/bin/activate; python /home/ubuntu/tcc/manage.py loaddata clientes.json'  
+
+
+    - name: Iniciando o servidor
+      shell: '. /home/ubuntu/tcc/venv/bin/activate; nohup python /home/ubuntu/tcc/manage.py runserver 0.0.0.0:8000 &'
+

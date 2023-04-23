@@ -10,7 +10,3 @@ module "aws_prod" {
   maximo = 10
   nomeGrupo = "prod"
 }
-
-output "IP" {
-  value = module.aws_prod.IP_publico
-}
