@@ -32,7 +32,7 @@ resource "aws_key_pair" "chaveSSH" {
 }
 
 resource "aws_autoscaling_group" "grupo" {
-  availability_zones=["${var.regiao_aws}a"]
+  availability_zones=["${var.regiao_aws}a", "${var.regiao_aws}b"]
   name = var.nomeGrupo
   max_size = var.maximo
   min_size = var.minimo
@@ -40,4 +40,17 @@ resource "aws_autoscaling_group" "grupo" {
     id = aws_launch_template.maquina.id
     version = "$Latest"
   }
+}
+
+resource "aws_default_subnet" "subnet_1" {
+  availability_zone = "${var.regiao_aws}a"
+}
+
+resource "aws_default_subnet" "subnet_2" {
+  availability_zone = "${var.regiao_aws}b"
+}
+
+resource "aws_lb" "loadBalancer" {
+  internal = false
+  subnets = [ aws_default_subnet.subnet_1.id, aws_default_subnet.subnet_2.id ]
 }
