@@ -6,6 +6,9 @@ module "aws_prod" {
   chave = "IaC-PROD"
   securityGroupName = "production-team-access"
   securityGroupDescription = "Acesso para o time de producao."
+  minimo = 1
+  maximo = 10
+  nomeGrupo = "prod"
 }
 
 output "IP" {

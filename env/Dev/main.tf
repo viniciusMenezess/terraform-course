@@ -6,6 +6,9 @@ module "aws-dev" {
   chave = "IaC-DEV"
   securityGroupName = "development-team-access"
   securityGroupDescription = "Acesso para o time de desenvolvimento."
+  minimo = 0
+  maximo = 1
+  nomeGrupo = "dev"
 }
 
 output "IP" {
