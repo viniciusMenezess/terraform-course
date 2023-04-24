@@ -23,8 +23,15 @@ resource "aws_launch_template" "maquina" {
   }
 
   security_group_names = [ var.securityGroupName ]
-  user_data = filebase64("ansible.sh")
+  user_data = var.producao ? filebase64("ansible.sh") : ""
 }
+
+# if (var.producao) {
+#   filebase64("ansible.sh")
+# } else {
+#   ""
+# }
+
 
 resource "aws_key_pair" "chaveSSH" {
   key_name = var.chave
